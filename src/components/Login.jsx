@@ -32,7 +32,7 @@ const Login = () => {
             Log In
           </button>
 
-          <button className="flex w-full items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 bg-white text-gray-700 hover:bg-gray-100 transition">
+          <button className="flex w-full items-center justify-center space-x-2 border border-gray-300 rounded-lg px-4 py-2 bg-red-900 text-white hover:bg-gray-100 transition">
             <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Logo" className="w-5 h-5" />
             <span>Sign in with Google</span>
           </button>
