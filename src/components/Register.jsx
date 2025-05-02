@@ -17,7 +17,7 @@ const Register = () => {
     try {
       setLoading(true)
       await registerUser(email, password)
-      setSuccess("Registration successful! Welcome guestbook");
+      setSuccess("Registration successful! Welcome guestbook")
     } catch (error) {
       // Handle the error from firebase.js
       switch (error.code) {
@@ -82,7 +82,7 @@ const Register = () => {
 
         <p className="mt-6 text-sm text-center text-gray-600">
           All Ready have an account?
-          <a href="#" className="text-blue-600 hover:underline"> Login</a>
+          <a href="/login" className="text-blue-600 hover:underline"> Login</a>
         </p>
       </div>
     </div>

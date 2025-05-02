@@ -7,19 +7,9 @@ import {
     getAuth,
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    signInWithPopup,
-    signInWithRedirect,
-    signOut,
-    onAuthStateChanged,
-    sendEmailVerification,
     sendPasswordResetEmail,
-    updateProfile,
-    updateEmail,
-    updatePassword,
-    deleteUser,
-    reauthenticateWithCredential,
-    getIdToken,
-    getIdTokenResult
+    GoogleAuthProvider,
+    signInWithPopup
   } from "firebase/auth";
   
 
@@ -36,15 +26,40 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const googleAuthProvider = new GoogleAuthProvider()
 
 const registerUser = async (email, password) => {
     try {
-        const user = await createUserWithEmailAndPassword(auth, email, password);
-        console.log(user);
-        return user;
+        await createUserWithEmailAndPassword(auth, email, password);
     } catch (error) {
-        throw error;
+        throw(error);
     }
 }
 
-export { registerUser }
+const loginUser = async (email, password) => {
+    try {
+        await signInWithEmailAndPassword(auth, email, password);
+    } catch (error) {
+        throw(error);
+    }
+}
+
+const resetPassword = async (email) => {
+    try {
+        await sendPasswordResetEmail(auth, email);
+    } catch (error) {
+        throw(error);
+    }
+}
+
+const loginWithGoogle = async () => {
+    try {
+        const res = await signInWithPopup(auth, googleAuthProvider)
+        const user = res.user
+        return user
+    } catch (error) {
+        throw(error)        
+    }
+}
+
+export { registerUser, loginUser, resetPassword, auth, loginWithGoogle }

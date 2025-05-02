@@ -1,8 +1,23 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { signOut } from 'firebase/auth'
+import { auth } from '../firebase'
 
 const Header = () => {
 
   const [showMenu, setShowMenu] = useState(false)
+  const navigate = useNavigate()
+
+  const handleSignout = async (e) => {
+    e.preventDefault()
+
+    await signOut(auth).then(()=> {
+      navigate('/login')
+      // console.log('User logout done')
+    }).then((error)=>{
+      console.log(error)
+    })
+  }
 
   return (
     <nav className="bg-white border-b shadow-sm">
@@ -16,7 +31,7 @@ const Header = () => {
           <div className="flex items-center md:hidden" onClick={() => setShowMenu(!showMenu)}>
             <button id="mobile-menu-button" className="text-gray-700 hover:text-gray-900 focus:outline-none focus:text-gray-900">
               <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -27,7 +42,7 @@ const Header = () => {
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
-            <a href="#" className="block bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Logout</a>
+            <a href="#" onClick={handleSignout} className="block bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Logout</a>
           </div>
         </div>
       </div>
@@ -38,7 +53,7 @@ const Header = () => {
           <a href="#" className="block text-gray-700 hover:text-blue-600">About</a>
           <a href="#" className="block text-gray-700 hover:text-blue-600">Services</a>
           <a href="#" className="block text-gray-700 hover:text-blue-600">Contact</a>
-          <a href="#" className="block bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Logout</a>
+          <a href="#" onClick={handleSignout} className="block bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Logout</a>
         </div>
       )}
     </nav>
