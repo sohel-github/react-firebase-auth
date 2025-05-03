@@ -40,8 +40,6 @@ const Profile = () => {
 
                         {loading && <Spinner />}
 
-                        
-
                         <form method='post' onSubmit={handleUpdateData}>
                             <div className="mb-4">
                             <label htmlFor="name" className="block text-gray-700 font-medium mb-1">Name</label>

@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import Spinner from './Spinner';
 import { resetPassword } from '../firebase';
+import { NavLink } from 'react-router-dom';
 
 const Reset = () => {
 
@@ -73,7 +74,7 @@ const Reset = () => {
 
         <p className="mt-6 text-sm text-center text-gray-600">
           All Ready have an account?
-          <a href="/login" className="text-blue-600 hover:underline"> Login</a>
+          <NavLink to="/login" className="text-blue-600 hover:underline"> Login</NavLink>
         </p>
       </div>
     </div>

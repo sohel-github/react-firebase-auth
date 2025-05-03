@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import { loginUser, loginWithFacebook, loginWithGithub, loginWithGoogle } from '../firebase'
 import Spinner from './Spinner'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, NavLink } from 'react-router-dom'
 
 const Login = () => {
 
@@ -101,7 +101,7 @@ const Login = () => {
               <input type="checkbox" className="mr-2" />
               Remember me
             </label>
-            <a href="/reset" className="text-sm text-blue-600 hover:underline">Forgot password?</a>
+            <NavLink to="/reset" className="text-sm text-blue-600 hover:underline">Forgot password?</NavLink>
           </div>
 
           <button type="submit"
@@ -134,7 +134,7 @@ const Login = () => {
 
         <p className="mt-6 text-sm text-center text-gray-600">
           Don't have an account?
-          <a href="/register" className="text-blue-600 hover:underline"> Register</a>
+          <NavLink to="/register" className="text-blue-600 hover:underline"> Register</NavLink>
         </p>
       </div>
     </div>
