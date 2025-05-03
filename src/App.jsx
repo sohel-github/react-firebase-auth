@@ -5,6 +5,7 @@ import Login from './components/Login'
 import Register from './components/Register'
 import Reset from './components/Reset'
 import PrivateRoutes from './routes/PrivateRoutes';
+import Profile from './components/Profile';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route element={<PrivateRoutes />}>
           <Route path='/home' element={<Home/>} />
+          <Route path='/profile' element={<Profile/>} />
           <Route path='/' element={<Home/>} exact />
         </Route>
         <Route path='/login' element={<Login/>} />

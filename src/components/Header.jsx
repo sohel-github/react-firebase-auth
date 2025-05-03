@@ -38,9 +38,9 @@ const Header = () => {
           </div>
 
           <div className="hidden md:flex md:items-center space-x-6">
-            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
+            <a href="/" className="text-gray-700 hover:text-blue-600 font-medium">Home</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">About</a>
-            <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Services</a>
+            <a href="/profile" className="text-gray-700 hover:text-blue-600 font-medium">Profile</a>
             <a href="#" className="text-gray-700 hover:text-blue-600 font-medium">Contact</a>
             <a href="#" onClick={handleSignout} className="block bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Logout</a>
           </div>
@@ -51,7 +51,7 @@ const Header = () => {
         <div id="mobile-menu" className="px-4 pb-4 space-y-2">
           <a href="#" className="block text-gray-700 hover:text-blue-600">Home</a>
           <a href="#" className="block text-gray-700 hover:text-blue-600">About</a>
-          <a href="#" className="block text-gray-700 hover:text-blue-600">Services</a>
+          <a href="/profile" className="block text-gray-700 hover:text-blue-600">Profile</a>
           <a href="#" className="block text-gray-700 hover:text-blue-600">Contact</a>
           <a href="#" onClick={handleSignout} className="block bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">Logout</a>
         </div>

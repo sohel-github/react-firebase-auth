@@ -9,7 +9,10 @@ import {
     signInWithEmailAndPassword,
     sendPasswordResetEmail,
     GoogleAuthProvider,
-    signInWithPopup
+    FacebookAuthProvider,
+    GithubAuthProvider,
+    signInWithPopup,
+    updateProfile
   } from "firebase/auth";
   
 
@@ -27,6 +30,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const googleAuthProvider = new GoogleAuthProvider()
+const facebookAuthProvider = new FacebookAuthProvider()
+const githubAuthProvider = new GithubAuthProvider()
 
 const registerUser = async (email, password) => {
     try {
@@ -38,7 +43,9 @@ const registerUser = async (email, password) => {
 
 const loginUser = async (email, password) => {
     try {
-        await signInWithEmailAndPassword(auth, email, password);
+        const res = await signInWithEmailAndPassword(auth, email, password);
+        const user = res.user
+        return user
     } catch (error) {
         throw(error);
     }
@@ -62,4 +69,39 @@ const loginWithGoogle = async () => {
     }
 }
 
-export { registerUser, loginUser, resetPassword, auth, loginWithGoogle }
+const loginWithFacebook = async () => {
+    try {
+        const res = await signInWithPopup(auth, facebookAuthProvider)
+        const user = res.user
+        console.log(user)
+        return user
+    } catch (error) {
+        throw(error)        
+    }
+}
+
+const loginWithGithub = async () => {
+    try {
+        const res = await signInWithPopup(auth, githubAuthProvider)
+        const user = res.user
+        console.log(user)
+        return user
+    } catch (error) {
+        throw(error)        
+    }
+}
+
+const updateAuthProfile = async (displayName, photoURL) => {
+    try {
+        // const res = await updateProfile(auth.currentUser, githubAuthProvider)
+        await updateProfile(auth.currentUser, {displayName,photoURL})
+        // const user = res.user
+        // console.log(user)
+        // return user
+        console.log("Profile updated!");
+    } catch (error) {
+        throw(error)        
+    }
+}
+
+export { registerUser, loginUser, resetPassword, auth, loginWithGoogle, loginWithFacebook, loginWithGithub, updateAuthProfile }
